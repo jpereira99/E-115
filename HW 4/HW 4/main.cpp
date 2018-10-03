@@ -1,0 +1,209 @@
+//
+//  main.cpp
+//  HW 4
+//
+//  Created by Jayden Pereira on 10/1/18.
+//  Copyright © 2018 Jayden Pereira. All rights reserved.
+//
+
+#include <iostream>
+#include "string"
+using namespace std;
+
+//Declarations of functions
+int hypothetical_grade();
+int custom_grade();
+int letter_grade_interpreter(int num); //if statements are used in both funcs, so why not trunkate some code
+
+int main()
+{
+    //Splash screen
+    cout << "Welcome to Grade-O, your favorite source of regretting that assignment you procrastinated!" << endl << endl;
+    
+    //Function selector loop (looped to make sure an appropriate function is selected)
+    while (true)
+    {
+        cout << "Please type '1' to enter grades into the hypothetical course or type '0' to create your own course: ";
+        int funcselect;
+        cin >> funcselect;
+            if (funcselect == 1)
+            {
+                hypothetical_grade();
+                break;
+            }
+            else if (funcselect == 0)
+            {
+                custom_grade();
+                break;
+            }
+            else
+            {
+                cout << "Sorry, wrong input. ";
+                continue;
+            }
+            
+    }
+   
+    return 0;
+}
+
+//Hypothetical Class scenario
+int hypothetical_grade()
+{
+    //Homework stack
+    int i;
+    int hw;
+    int totalhw;
+    hw = 0;
+    totalhw = 0;
+    for (i = 1; i <= 6; i = i + 1)
+    {
+        cout << endl << "Enter your grade for homework " << i << ": ";
+        cin >> hw;
+        totalhw = totalhw + hw;
+        
+    }
+    totalhw = totalhw / 6;
+    
+    //Midterm stack
+    i = 0;
+    int midterm;
+    int totalmidterm;
+    midterm = 0;
+    totalmidterm = 0;
+    for (i = 1; i <= 2; i = i + 1)
+    {
+        cout << endl << "Enter your grade for midterm " << i << ": ";
+        cin >> midterm;
+        totalmidterm = totalmidterm + midterm;
+        
+    }
+    totalmidterm = totalmidterm / 2;
+    
+    //Final stack
+    int finaltest;
+    cout << endl << "Enter your grade for the final: ";
+    cin >> finaltest;
+    
+    //Calculator
+    int grade;
+    grade = .4 * totalhw + .4 * totalmidterm + .2 * finaltest;
+    cout << endl;
+    letter_grade_interpreter(grade);
+    
+    return 1;
+}
+
+//Custom Class scenario
+int custom_grade()
+{
+    //HOMEWORK STACK
+    //Weight of homework
+    cout << endl << "What's the weight, as a decimal, of your homeworks: ";
+    float hw_weight;
+    cin >> hw_weight;
+    
+    //How many homeworks
+    cout << endl << "How many homeworks were done: ";
+    int j;
+    cin >> j;
+    
+    
+    //Homework loop
+    int i;
+    int hw;
+    int totalhw;
+    hw = 0;
+    totalhw = 0;
+    for (i = 1; i <= j; i = i + 1)
+    {
+        cout << endl << "Enter your grade for homework " << i << ": ";
+        cin >> hw;
+        totalhw = totalhw + hw;
+        
+    }
+    totalhw = totalhw / j;
+    
+    //MIDTERM STACK
+    //Weight of midterm
+    cout << endl << "What's the weight, as a decimal, of your midterms: ";
+    float midterm_weight;
+    cin >> midterm_weight;
+    
+    //How many midterms
+    cout << endl << "How many midterms were done: ";
+    j = 0;
+    cin >> j;
+    
+    
+    //midterm loop
+    int midterm;
+    int totalmidterm;
+    midterm = 0;
+    totalmidterm = 0;
+    for (i = 1; i <= j; i = i + 1)
+    {
+        cout << endl << "Enter your grade for midterm " << i << ": ";
+        cin >> midterm;
+        totalmidterm = totalmidterm + midterm;
+        
+    }
+    totalmidterm = totalmidterm / j;
+    
+    //FINAL STACK
+    //Weight of final
+    cout << endl << "What's the weight, as a decimal, of your final: ";
+    float final_weight;
+    cin >> final_weight;
+    
+    //How many finals
+    cout << endl << "How many finals were done: ";
+    j = 0;
+    cin >> j;
+    
+    
+    //midterm final
+    int finalgrade;
+    int totalfinal;
+    finalgrade = 0;
+    totalfinal = 0;
+    for (i = 1; i <= j; i = i + 1)
+    {
+        cout << endl << "Enter your grade for final " << i << ": ";
+        cin >> finalgrade;
+        totalfinal = totalfinal + finalgrade;
+        
+    }
+    totalfinal = totalfinal / j;
+    
+    //CALCULATOR
+    float grade;
+    grade = hw_weight * totalhw + midterm_weight * totalmidterm + final_weight * finalgrade;
+    cout << endl;
+    letter_grade_interpreter(grade);
+    
+    return 2;
+}
+
+
+//Letter grade if statements
+int letter_grade_interpreter(int num)
+{
+    if(num > 90)
+    {
+        cout << "Congrats, you got an A" << endl;
+    }
+    else if (num > 80 && num <= 90)
+    {
+        cout << "You got a B" << endl;
+    }
+    else if (num > 70 && num <= 80)
+    {
+        cout << "You got a C" << endl;
+    }
+    else
+    {
+        cout << "You got a D" << endl;
+    }
+    return 3;
+}
