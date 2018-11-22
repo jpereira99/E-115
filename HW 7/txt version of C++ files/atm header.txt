@@ -1,0 +1,18 @@
+#ifndef atm_h
+#define atm_h
+
+class atmMachine {
+public:
+    void checkIfUser();
+private:
+    std::ofstream balanceOfUserWriter;
+    std::ifstream balanceOfUserReader;
+    void mainTerminal();
+    void depositMoney();
+    void withdrawMoney();
+    void checkBalance();
+    void changePass();
+    int closeTerminal();
+};
+
+#endif
